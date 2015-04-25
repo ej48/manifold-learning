@@ -58,3 +58,9 @@ target/
 
 # mac OSX
 .DS_Store
+
+# latex
+*.aux
+*.log
+*.out
+*.synctex.gz

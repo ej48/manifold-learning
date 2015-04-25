@@ -224,7 +224,7 @@ But assuming there is a $k$-dimensional approximately linear manifold in $X$, we
 \[\tilde \Sigma = \Sigma(1:k, :)\]
 \item return $Y = \tilde \Sigma V^T$.
 \end{enumerate}
-Note $\tilde X$ is a $k \times n$ reconstructed data matrix of $n$ samples in $k$ dimensions, as desired. 
+Note $Y$ is a $k \times n$ reconstructed data matrix of $n$ samples in $k$ dimensions, as desired. 
 
 \section*{Dimension reduction for non-linear manifolds}
 PCA and MDS are simple and efficient methods of dimensionality reduction. They are guaranteed to find data structure that lie on a linear subspace of the input data that lie in the originally high-dimensional vector space. However, these methods fail when the structure takes the form of a nonlinear manifold (generalization of a surface to higher dimensions). One popular toy example is the ``swiss roll". Here we introduce two techniques that attempts to address these issues: Isomap and Locally Linear Embedding (LLE).
