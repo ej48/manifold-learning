@@ -274,7 +274,7 @@ Given that weights are computed for each $\mathbf{x}_i$, we wish to find $\mathb
 \[\min_{\mathbf{y}_1, \ldots \mathbf{y}_n} \sum_{i=1}^n \| \mathbf{y}_i - \sum_{j \in \mathcal{N}(i)} w_{j,i} \mathbf{y}_j \| ^2 \]
 
 \section*{Experiment on Handwritten Digit}
-In this section we present results on applying dimensionality reduction to handwritten digit data. The data is in the format of $28\times 28$ pixel grey-scale image with each pixel represented by an integer by 0 to 255. The data are downloaded from \url{http://cis.jhu.edu/~sachin/digit/digit.html}. In the dataset, there are 1000 images for each digit between 0 to 9. Figure \ref{digit-vis} shows an example image of each digit. 
+In this section we present results on applying dimensionality reduction to handwritten digit data. The data is in the format of $28\times 28$ pixel grey-scale image with each pixel represented by an integer by 0 to 255. The data are downloaded from \url{http://cis.jhu.edu/~sachin/digit/digit.html}. In the dataset, there are 1000 images for each digit between 0 to 9. Figure \ref{digit-vis} shows an example image of each digit.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=1in]{0.png}
@@ -291,21 +291,22 @@ In this section we present results on applying dimensionality reduction to handw
 \label{digit-vis}
 \end{center}
 \end{figure}
-When analyzing the data, we treat each image as a 784 dimensional vector. 
+When analyzing the data, we treat each image as a 784 dimensional vector.
 \subsection*{Principal Component Analysis}
-Principal component analysis is good for visualizing high dimensional data. We represent each 784-dimensional data point using three principal components. Figure \ref{pca_all} shows the representation of all digits, using the principal components derived from the whole dataset. 
+Principal component analysis is good for visualizing high dimensional data. We represent each 784-dimensional data point using two and three principal components. Figure \ref{pca_all} shows the representation of all digits, using the principal components derived from the whole dataset.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=3in]{pca_all.png}
-\caption{Projection of each data point onto the first three principal components}
+\includegraphics[width=3in]{pca_all.png}\\
+\includegraphics[width=3in]{pca_all_3d.png}
+\caption{Projection of each data point onto first two and three principal components}
 \label{pca_all}
 \end{center}
 \end{figure}
-We can see that although the data representing each digit are not linearly separable, they indeed show very strong clustering effect. Thus, PCA captures the similarity between data representing same digit well. To better visualize this effect, Figure \ref{pca_012} shows projection of digit 0, 1, and 2 onto first three principal components derived from data of digit 0, 1, 2 only. We can see that data of each digit are clearly separable. 
+We can see that for 2D decomposition, approximate clustering effect is shown but data representing different digits still blend with each other. However, this is alleviated if we add a third principal component. Although the data representing each digit are not linearly separable, they indeed show very strong clustering effect. Thus, PCA captures the similarity between data representing same digit well. To better visualize this effect, Figure \ref{pca_012} shows projection of digit 0, 1, and 2 onto first two principal components derived from data of digit 0, 1, 2 only. We can see that data of each digit are clearly separable with only two principal components.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=3in]{pca_012.png}
-\caption{Projection of data point for digit 0, 1, 2 onto the first three principal components}
+\caption{Projection of data point for digit 0, 1, 2 onto first two principal components}
 \label{pca_012}
 \end{center}
 \end{figure}
