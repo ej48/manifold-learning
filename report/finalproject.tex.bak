@@ -7,7 +7,6 @@
 \usepackage{hyperref}
 \usepackage{multicol, float}
 \usepackage{verbatim}
-\usepackage{url}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
@@ -57,10 +56,10 @@ We will introduce some popular dimensionality reduction methods: Principal Compo
 
 \subsection*{Eigenvalue Decomposition (EVD)}
 
-We will only consider the EVD for symmetric matrices, and so will only review properties applied to matrices of this type:
+We will only consider the EVD for symmetric matrices, and so will only review properties applied to matrices of this type: 
 \begin{definition}
 \emph{(Symmetric Matrix)}
-Let $A$ be a $n \times n$ matrix. Then $A$ is \textit{symmetric} if $A = A^T$.
+Let $A$ be a $n \times n$ matrix. Then $A$ is \textit{symmetric} if $A = A^T$. 
 \end{definition}
 
 We can consider the eigenvectors and eigenvalues of symmetric matrices (and square matrices in general):
@@ -87,11 +86,11 @@ We can perform a related, extremely useful, factorization to any real $m \times 
 \begin{theorem}
 \emph{(Existence of SVD)}
 \label{SVD}
-Let $A$ be a real $m \times n$ matrix. Then there exists orthogonal matrices
+Let $A$ be a real $m \times n$ matrix. Then there exists orthogonal matrices 
 \[U =\begin{bmatrix} \mathbf{u}_1& \ldots & \mathbf{u}_m \end{bmatrix} \qquad V =\begin{bmatrix} \mathbf{v}_1& \ldots & \mathbf{v}_n \end{bmatrix}\]
 with $\mathbf{u}_i \in \mathbb{R}^m$ and $\mathbf{v}_j \in \mathbb{R}^n$, s.t.
 \[A = U \Sigma V^T\]
-where $\Sigma$ is a diagonal matrix with singular values $\sigma_1 \ge \ldots \ge \sigma_r \ge 0$ along the diagonal, $\mathbf{u}_1, \ldots, \mathbf{u}_m$ are the left singular vectors, and $\mathbf{v}_1, \ldots, \mathbf{v}_n$ are the right singular vectors.
+where $\Sigma$ is a diagonal matrix with singular values $\sigma_1 \ge \ldots \ge \sigma_r \ge 0$ along the diagonal, $\mathbf{u}_1, \ldots, \mathbf{u}_m$ are the left singular vectors, and $\mathbf{v}_1, \ldots, \mathbf{v}_n$ are the right singular vectors. 
 \end{theorem}
 
 This is closely related to the EVD. Indeed, it is useful to observe that:
@@ -129,7 +128,7 @@ In other words, we wish to find some matrix $P$ where
 \[Y = PX\]
 such that the covariance matrix of $Y$,
 \[C_Y = \frac{1}{n-1} YY^T\]
-is diagonalized. Furthermore, the \textit{rows} $\mathbf{p}_1, \ldots, \mathbf{p}_m$ in $\mathbb{R}^m$ of $P$ are exactly the basis vectors we're looking for. This can be seen easily by considering
+is diagonalized. Furthermore, the \textit{rows} $\mathbf{p}_1, \ldots, \mathbf{p}_m$ in $\mathbb{R}^m$ of $P$ are exactly the basis vectors we're looking for. This can be seen easily by considering 
 \[y_i = \sum_{j=1}^m \mathbf{p}_j^T \mathbf{x}_i \]
 
 Therefore, the goal of PCA is to find $P$. \\
@@ -169,32 +168,32 @@ We now also derived a simple algorithm to compute PCA of the matrix $X$:
 This, $Y$ is a $m \times n$ matrix of the transformed data into a more ``natural'' basis (i.e. $C_Y$ is diagonalized).
 
 \subsubsection*{PCA for dimensionality reduction}
-A consequence of the eigenvalue decomposition above is that there is a natural ordering to the singular values.
+A consequence of the eigenvalue decomposition above is that there is a natural ordering to the singular values. 
 \[\sigma_1 \ge \ldots \sigma_r \ge \sigma_{r+1} = \ldots = \sigma_{m}\]
 
-Since they correspond to variances in each principal direction $\mathbf{p}_i$, if we wish to find the first three principal components (i.e. to have data in $\mathbb{R}^3$), let
+Since they correspond to variances in each principal direction $\mathbf{p}_i$, if we wish to find the first three principal components (i.e. to have data in $\mathbb{R}^3$), let 
 \[P_3 = \begin{bmatrix} \mathbf{p}_1^T \\[0.5em] \mathbf{p}_2^T \\[0.5em] \mathbf{p}_3^T \end{bmatrix}\]
-be a $3 \times m$ matrix. Then
+be a $3 \times m$ matrix. Then 
 \[Y_3 = P_3X\]
-returns a $3 \times n$ data matrix $Y_3$, with n samples in the 3 principal dimensions that account for the most variance.
+returns a $3 \times n$ data matrix $Y_3$, with n samples in the 3 principal dimensions that account for the most variance. 
 
 \subsection*{Classical Multidimensional Scaling (CMDS)}
 
-Given some distance matrix $D$, where $d_{ij}$ measures the dissimilarity between elements $i$ and $j$, MDS attempts to find a specified low-dimensional representation that preserves distances as much as possible. Suppose $X$ is some (possibly unknown) $m \times n$ data matrix of $m$ dimensions and $n$ samples that generated $D$. Furthermore, there is a $k$-dimensional manifold embedded in $X$, which we wish to represent with $Y$. For simplicity we will measure distances with the Euclidean Metric.
+Given some distance matrix $D$, where $d_{ij}$ measures the dissimilarity between elements $i$ and $j$, MDS attempts to find a specified low-dimensional representation that preserves distances as much as possible. Suppose $X$ is some (possibly unknown) $m \times n$ data matrix of $m$ dimensions and $n$ samples that generated $D$. Furthermore, there is a $k$-dimensional manifold embedded in $X$, which we wish to represent with $Y$. For simplicity we will measure distances with the Euclidean Metric. 
 
 \begin{theorem}
 \emph{(CMDS)}
 \label{CMDS}
-Let $D$ be a real, symmetric $n \times n$ dissimilarity/distance matrix generated with a Euclidean metric from $X$, an unknown $m \times n$ data matrix of $n$ samples and $m$ dimensions. If $D=V \Sigma^2 V^T$ is the eigenvalue decomposition of $D$ and $\Sigma_m$ is the first $m$ rows of $\Sigma$, then
+Let $D$ be a real, symmetric $n \times n$ dissimilarity/distance matrix generated with a Euclidean metric from $X$, an unknown $m \times n$ data matrix of $n$ samples and $m$ dimensions. If $D=V \Sigma^2 V^T$ is the eigenvalue decomposition of $D$ and $\Sigma_m$ is the first $m$ rows of $\Sigma$, then 
 \[X = \Sigma_m V^T\]
 not necessarily unique.
 \end{theorem}
 \begin{proof}
 Let $x_i$ be the $i$-th $m$-dimensional element of $X$. Then the euclidean distance between $x_i$ and $x_j$ is:
-\[d_{ij} = \| \mathbf{x}_i - \mathbf{x}_j \|_2^2\]
+\[d_{ij} = \| \mathbf{x}_i - \mathbf{x}_j \|_2^2\] 
 Writing out the terms, we have that
 \[d_{ij} = \|\mathbf{x}_i\|_2^2 + \|\mathbf{x}_j\|_2^2 - 2 \mathbf{x}_i^T\mathbf{x}_j\]
-For convenience, we can center and rescale $d_{ij}$. These are acceptable, linear operations on the space that imply the non-uniqueness of $X$.
+For convenience, we can center and rescale $d_{ij}$. These are acceptable, linear operations on the space that imply the non-uniqueness of $X$. 
 \[\tilde d_{ij} = -\frac{1}{2} \left( d_{ij} - \|\mathbf{x}_i\|_2^2 - \|\mathbf{x}_j\|_2^2 \right) = \mathbf{x}_i^T\mathbf{x}_j \]
 Let $\tilde D$ be the centered and rescaled distance matrix. Then we can represent in matrix notation:
 \[\tilde D = X^TX\]
@@ -205,7 +204,7 @@ Since $\tilde D$ is symmetric, we can take its eigenvalue decomposition to get:
 &= (V \Sigma ) (\Sigma V^T) \\
 &= (\Sigma V^T)^T (\Sigma V^T)
 \end{align*}
-Therefore,
+Therefore, 
 \[X = \Sigma V^T\]
 But since $X$ is assumed to be embedded in $m$ dimensional space, we can select the first $m$ rows of $\Sigma$ $(\Sigma_m)$. So, instead
 \[X = \Sigma_m V^T\]
@@ -225,7 +224,7 @@ But assuming there is a $k$-dimensional approximately linear manifold in $X$, we
 \[\tilde \Sigma = \Sigma(1:k, :)\]
 \item return $Y = \tilde \Sigma V^T$.
 \end{enumerate}
-Note $Y$ is a $k \times n$ reconstructed data matrix of $n$ samples in $k$ dimensions, as desired.
+Note $Y$ is a $k \times n$ reconstructed data matrix of $n$ samples in $k$ dimensions, as desired. 
 
 \section*{Dimension reduction for non-linear manifolds}
 PCA and MDS are simple and efficient methods of dimensionality reduction. They are guaranteed to find data structure that lie on a linear subspace of the input data that lie in the originally high-dimensional vector space. However, these methods fail when the structure takes the form of a nonlinear manifold (generalization of a surface to higher dimensions). One popular toy example is the ``swiss roll". Here we introduce two techniques that attempts to address these issues: Isomap and Locally Linear Embedding (LLE).
@@ -270,45 +269,9 @@ The first step of LLE is to solve the local problem. Given $n$ data points in $\
 \]
 
 \subsubsection*{Global reconstruction}
-Given that weights are computed for each $\mathbf{x}_i$, we wish to find $\mathbf{y}_i$, the lower dimensional analog for each $\mathbf{x}_i$, by solving the following global minimization problem over all $i$.
+Given that weights are computed for each $\mathbf{x}_i$, we wish to find $\mathbf{y}_i$, the lower dimensional analog for each $\mathbf{x}_i$, by solving the following global minimization problem over all $i$. 
 \[\min_{\mathbf{y}_1, \ldots \mathbf{y}_n} \sum_{i=1}^n \| \mathbf{y}_i - \sum_{j \in \mathcal{N}(i)} w_{j,i} \mathbf{y}_j \| ^2 \]
 
-\section*{Experiment on Handwritten Digit}
-In this section we present results on applying dimensionality reduction to handwritten digit data. The data is in the format of $28\times 28$ pixel grey-scale image with each pixel represented by an integer by 0 to 255. The data are downloaded from \url{http://cis.jhu.edu/~sachin/digit/digit.html}. In the dataset, there are 1000 images for each digit between 0 to 9. Figure \ref{digit-vis} shows an example image of each digit. 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=1in]{0.png}
-\includegraphics[width=1in]{1.png}
-\includegraphics[width=1in]{2.png}\\
-\includegraphics[width=1in]{3.png}
-\includegraphics[width=1in]{4.png}
-\includegraphics[width=1in]{5.png}\\
-\includegraphics[width=1in]{6.png}
-\includegraphics[width=1in]{7.png}
-\includegraphics[width=1in]{8.png}\\
-\includegraphics[width=1in]{9.png}
-\caption{Visualization of digit data}
-\label{digit-vis}
-\end{center}
-\end{figure}
-When analyzing the data, we treat each image as a 784 dimensional vector. 
-\subsection*{Principal Component Analysis}
-Principal component analysis is good for visualizing high dimensional data. We represent each 784-dimensional data point using three principal components. Figure \ref{pca_all} shows the representation of all digits, using the principal components derived from the whole dataset. 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=3in]{pca_all.png}
-\caption{Projection of each data point onto the first three principal components}
-\label{pca_all}
-\end{center}
-\end{figure}
-We can see that although the data representing each digit are not linearly separable, they indeed show very strong clustering effect. Thus, PCA captures the similarity between data representing same digit well. To better visualize this effect, Figure \ref{pca_012} shows projection of digit 0, 1, and 2 onto first three principal components derived from data of digit 0, 1, 2 only. We can see that data of each digit are clearly separable. 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=3in]{pca_012.png}
-\caption{Projection of data point for digit 0, 1, 2 onto the first three principal components}
-\label{pca_012}
-\end{center}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -328,4 +291,4 @@ http://www.stat.cmu.edu/~ryantibs/advmethods/notes/ otherdr.pdf \\
 
 \end{multicols}
 
-\end{document}
+\end{document}  
