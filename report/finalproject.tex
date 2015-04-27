@@ -292,7 +292,7 @@ In this section we present results on applying dimensionality reduction to handw
 \end{center}
 \end{figure}
 When analyzing the data, we treat each image as a 784 dimensional vector.
-\subsection*{Principal Component Analysis}
+\subsection*{Visualization Using Principal Component Analysis}
 Principal component analysis is good for visualizing high dimensional data. We represent each 784-dimensional data point using two and three principal components. Figure \ref{pca_all} shows the representation of all digits, using the principal components derived from the whole dataset.
 \begin{figure}[H]
 \begin{center}
@@ -310,6 +310,10 @@ We can see that for 2D decomposition, approximate clustering effect is shown but
 \label{pca_012}
 \end{center}
 \end{figure}
+
+\subsection*{Classification Using Principal Component Analysis}
+In this section we train a support vector machine (SVM) classifier to classify digit data. For 1000 data for each digit, we use 800 data for training and 200 data for testing. The feature space consists of first three principal component decompositions. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
