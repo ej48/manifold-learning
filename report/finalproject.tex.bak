@@ -292,23 +292,29 @@ In this section we present results on applying dimensionality reduction to handw
 \end{center}
 \end{figure}
 When analyzing the data, we treat each image as a 784 dimensional vector.
-\subsection*{Principal Component Analysis}
+\subsection*{Visualization Using Principal Component Analysis}
 Principal component analysis is good for visualizing high dimensional data. We represent each 784-dimensional data point using two and three principal components. Figure \ref{pca_all} shows the representation of all digits, using the principal components derived from the whole dataset.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=3in]{pca_all.png}
-\caption{Projection of each data point onto the first three principal components}
+\includegraphics[width=3in]{pca_all.png}\\
+\includegraphics[width=3in]{pca_all_3d.png}
+\caption{Projection of each data point onto first two and three principal components}
 \label{pca_all}
 \end{center}
 \end{figure}
-We can see that although the data representing each digit are not linearly separable, they indeed show very strong clustering effect. Thus, PCA captures the similarity between data representing same digit well. To better visualize this effect, Figure \ref{pca_012} shows projection of digit 0, 1, and 2 onto first three principal components derived from data of digit 0, 1, 2 only. We can see that data of each digit are clearly separable.
+We can see that for 2D decomposition, approximate clustering effect is shown but data representing different digits still blend with each other. However, this is alleviated if we add a third principal component. Although the data representing each digit are not linearly separable, they indeed show very strong clustering effect. Thus, PCA captures the similarity between data representing same digit well. To better visualize this effect, Figure \ref{pca_012} shows projection of digit 0, 1, and 2 onto first two principal components derived from data of digit 0, 1, 2 only. We can see that data of each digit are clearly separable with only two principal components.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=3in]{pca_012.png}
-\caption{Projection of data point for digit 0, 1, 2 onto the first three principal components}
+\caption{Projection of data point for digit 0, 1, 2 onto first two principal components}
 \label{pca_012}
 \end{center}
 \end{figure}
+
+\subsection*{Classification Using Principal Component Analysis}
+In this section we train a support vector machine (SVM) classifier to classify digit data. For 1000 data for each digit, we use 800 data for training and 200 data for testing. The feature space consists of first four principal component decompositions. We used three different classification methods: k-nearest neighbor (kNN), logistic regression, and support vector machine (SVM). 
+\subsubsection*{}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

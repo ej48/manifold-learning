@@ -49,7 +49,7 @@
 We will introduce some popular dimensionality reduction methods: Principal Component Analysis (PCA), Locally Linear Embedding (LLE), and Isomap. This survey assumes familiarity with elementary linear algebra. Some preliminary concepts will be given without proof.
 
 
-\begin{multicols}{2}
+%\begin{multicols}{2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -312,7 +312,31 @@ We can see that for 2D decomposition, approximate clustering effect is shown but
 \end{figure}
 
 \subsection*{Classification Using Principal Component Analysis}
-In this section we train a support vector machine (SVM) classifier to classify digit data. For 1000 data for each digit, we use 800 data for training and 200 data for testing. The feature space consists of first three principal component decompositions. 
+In this section we train a support vector machine (SVM) classifier to classify digit data. For 1000 data for each digit, we use 800 data for training and 200 data for testing. The feature space consists of first four principal component decompositions. We used three different classification methods: k-nearest neighbor (kNN), logistic regression, and support vector machine (SVM). for kNN, the optimal value of $k$ is selected by measuring performance on the test data. There are no free parameters in logistic regression without regularization. For SVM, we use a linear function as kernel. All three methods are implemented using \tt scikit-learn \rm library. The performance of using different number of nearest neighbors is plotted in Figure \ref{pca-knn-validation}. Table \ref{pca-error-rate} summarizes the error rate of each predictor. We see that the error rate is generally quite high. This is in part due to the fact that only four principal components are used. As shown in Figure \ref{pca-variance-explained}, four principal components can only explain 29\% variance of the data. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=3in]{pca-knn.png}
+\end{center}
+\caption{Performance of kNN classifier with different number of neighbors}
+\label{pca-knn-validation}
+\end{figure}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+kNN & logistic & SVM\\\hline
+0.3545 & 0.452 & 0.7865 \\\hline
+\end{tabular}
+\end{center}
+\caption{Error rate for different classification algorithms using PCA as dimensionality reduction}
+\label{pca-error-rate}
+\end{table}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=3in]{pca_explained.png}
+\end{center}
+\caption{Percentage of variance explained by principal components}
+\label{pca-variance-explained}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,6 +355,6 @@ http://www.stat.cmu.edu/~ryantibs/advmethods/notes/ otherdr.pdf \\
 \mbox{} \\
 
 
-\end{multicols}
+%\end{multicols}
 
 \end{document}
