@@ -294,8 +294,8 @@ In this section we present results on applying dimensionality reduction to handw
 When analyzing the data, we treat each image as a 784 dimensional vector.
 
 
-\subsection*{Visualization using LLE and Isomap}
-Similarly, we can visualize the dimension reduction to 2D using the LLE and Isomap methods. In Figures \ref{reduce_all_digits} and \ref{reduce_2_digits}, the digits are plotted in the 2D space.
+\subsection*{Visualization of Data}
+Using the PCA, LLE, and Isomap techniques, we can visualize the data after a dimension reduction to 2D. In Figures \ref{reduce_all_digits} and \ref{reduce_2_digits}, the digits are plotted in the 2D space.
 
 \begin{figure}[H]
 \begin{center}
@@ -316,6 +316,8 @@ Similarly, we can visualize the dimension reduction to 2D using the LLE and Isom
 \caption{Visualization of different dimension reductions of data onto 2D for data of only digit 0 and 1}
 \label{reduce_2_digits}
 \end{figure}
+
+We can see that for the 2D reduction, although the data representing each digit are not linearly separable, they indeed show very strong clustering effect. But when using only the data from digits 0 and 1, we can see that the data of each digit are clearly separable.
 
 \subsection*{Analysis by Classification}
 In this section, we quantify how good the dimensional reduction is by measuring the classification rate on the training set of the reduced digit data. We use three different classification methods: logistic regression, naive Bayes, and support vector machine (SVM). There are no free parameters in logistic regression without regularization and naive Bayes. For SVM, we use a linear function as kernel. All three methods are implemented using \tt scikit-learn \rm library.
