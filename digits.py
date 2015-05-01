@@ -10,17 +10,17 @@ from sklearn import (manifold, datasets, decomposition, ensemble, lda,
 digits = datasets.load_digits(n_class=6)
 n_samples, n_features = digits.data.shape
 n_neighbors = 30
-dimensions = 2
-training_size = int(0.8*n_samples)
+dimensions = 2              ### change this number
+X = digits.data
+y = digits.target
 
-# training set
-X = digits.data[:training_size] 
-y = digits.target[:training_size]
+# baseline, fit on high dimension
+log_clf = linear_model.LogisticRegression()
+log_clf.fit(X, y)
+y_pred = log_clf.predict(X)
+print "Accuracy score for baseline: {0}".format(metrics.accuracy_score(y_pred, y))
 
-# test set
-X_test = digits.data[training_size:]
-y_test = digits.target[training_size:]
-
+quit()
 
 #----------------------------------------------------------------------
 # Scale and visualize the embedding vectors
@@ -84,8 +84,7 @@ plot_embedding(X_pca,
 # Classification               
 log_clf = linear_model.LogisticRegression()
 log_clf.fit(X_pca, y)
-X_pca_test = clf.transform(X_test)
-y_pca_pred = log_clf.predict(X_pca_test)
+y_pca_pred = log_clf.predict(X_pca)
 
 #----------------------------------------------------------------------
 # Isomap projection of the digits dataset
@@ -102,8 +101,7 @@ plot_embedding(X_iso,
 # Classification               
 log_clf = linear_model.LogisticRegression()
 log_clf.fit(X_iso, y)
-X_iso_test = clf.transform(X_test)
-y_iso_pred = log_clf.predict(X_iso_test)
+y_iso_pred = log_clf.predict(X_iso)
 
 #----------------------------------------------------------------------
 # Locally linear embedding of the digits dataset
@@ -121,8 +119,7 @@ plot_embedding(X_lle,
 # Classification               
 log_clf = linear_model.LogisticRegression()
 log_clf.fit(X_lle, y)
-X_lle_test = clf.transform(X_test)
-y_lle_pred = log_clf.predict(X_lle_test)
+y_lle_pred = log_clf.predict(X_lle)
 
 #----------------------------------------------------------------------
 # MDS  embedding of the digits dataset
@@ -139,9 +136,7 @@ plot_embedding(X_mds,
 # Classification               
 log_clf = linear_model.LogisticRegression()
 log_clf.fit(X_mds, y)
-#X_mds_test = clf.transform(X_test)
-#y_mds_pred = log_clf.predict(X_mds_test)
-y_mds_pred = y_test
+y_mds_pred = log_clf.predict(X_mds)
 
 #----------------------------------------------------------------------
 # Display results
@@ -149,12 +144,12 @@ y_mds_pred = y_test
 # baseline, fit on high dimension
 log_clf = linear_model.LogisticRegression()
 log_clf.fit(X, y)
-y_pred = log_clf.predict(X_test)
-print "Accuracy score for baseline: {0}".format(metrics.accuracy_score(y_pred, y_test))
+y_pred = log_clf.predict(X)
+print "Accuracy score for baseline: {0}".format(metrics.accuracy_score(y_pred, y))
 
-print "Accuracy score for PCA: {0}".format(metrics.accuracy_score(y_pca_pred, y_test))
-print "Accuracy score for Isomap: {0}".format(metrics.accuracy_score(y_iso_pred, y_test))
-print "Accuracy score for LLE: {0}".format(metrics.accuracy_score(y_lle_pred, y_test))
-print "Accuracy score for MDS: {0}".format(metrics.accuracy_score(y_mds_pred, y_test))
+print "Accuracy score for PCA: {0}".format(metrics.accuracy_score(y_pca_pred, y))
+print "Accuracy score for Isomap: {0}".format(metrics.accuracy_score(y_iso_pred, y))
+print "Accuracy score for LLE: {0}".format(metrics.accuracy_score(y_lle_pred, y))
+print "Accuracy score for MDS: {0}".format(metrics.accuracy_score(y_mds_pred, y))
 
 plt.show()
