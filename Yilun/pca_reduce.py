@@ -6,6 +6,8 @@ train PCA basis based on training.txt and output dimension-reduced coefficients 
 from __future__ import division
 import sys
 from sklearn.decomposition import PCA
+from sklearn.manifold import Isomap
+from sklearn.manifold import LocallyLinearEmbedding
 from sklearn import preprocessing
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,11 +16,10 @@ from mpl_toolkits.mplot3d import Axes3D
 import random
 from colorsys import hsv_to_rgb
 
-final_dim = 4
-train = np.genfromtxt("training.txt", delimiter=',')
-test = np.genfromtxt("testing.txt", delimiter=',')
+final_dim = 30
+data = np.genfromtxt("100examples.txt", delimiter=',')
 pca = PCA(n_components=final_dim)
-reduced_train = pca.fit_transform(train)
-reduced_test = pca.transform(test)
-np.savetxt("training_reduced4.txt", reduced_train, delimiter=',')
-np.savetxt("testing_reduced4.txt", reduced_test, delimiter=',')
+isomap = Isomap(n_components=final_dim)
+lle = LocallyLinearEmbedding(n_components=final_dim)
+data_xformed = lle.fit_transform(data)
+np.savetxt("lle_data_30_dims.txt", data_xformed, delimiter=',')
