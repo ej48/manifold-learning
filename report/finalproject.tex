@@ -46,10 +46,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Abstract}
-We will introduce some popular dimensionality reduction methods: Principal Component Analysis (PCA), Locally Linear Embedding (LLE), and Isomap. This survey assumes familiarity with elementary linear algebra. Some preliminary concepts will be given without proof.
-
-
-%\begin{multicols}{2}
+We will introduce some popular dimensionality reduction methods: Principal Component Analysis (PCA), Locally Linear Embedding (LLE), and Isomap. This survey assumes familiarity with elementary linear algebra. Some preliminary concepts will be given without proof. When then apply these dimension reduction techniques to the Handwritten Digit dataset, which we condensed to 1000 examples of digits between 0 and 9, represented as a binary image. We indirectly evaluate the performance of PCA, LLE, and Isomap on different dimensions, and with different supervised classifiers to evaluate training misclassification rate. We found significant decline in the quality the classification as the number of dimensions gets reduced, though we are able to obtain around 50\% classification rates using only two dimensions with many classifier-dimension reduction combinations. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -303,7 +300,7 @@ Using the PCA, LLE, and Isomap techniques, we can visualize the data after a dim
 \includegraphics[width=2.2in]{lle_new.png}
 \includegraphics[width=2.2in]{isomap_new.png}
 \end{center}
-\caption{Visualization of different dimension reductions of data onto 2D}
+\caption{Visualization of different dimension reductions of data onto 2D. Each digit is a different color, and all 10 digits (0 to 9) are represented. The dimension reduction techniques from left to right: PCA, LLE, Isomap.}
 \label{reduce_all_digits}
 \end{figure}
 
@@ -313,7 +310,7 @@ Using the PCA, LLE, and Isomap techniques, we can visualize the data after a dim
 \includegraphics[width=2.2in]{lle2digit.png}
 \includegraphics[width=2.2in]{isomap2digit.png}
 \end{center}
-\caption{Visualization of different dimension reductions of data onto 2D for data of only digit 0 and 1}
+\caption{Visualization of different dimension reductions of data onto 2D for data of only digit 0 and 1. The dimension reduction techniques from left to right: PCA, LLE, Isomap.}
 \label{reduce_2_digits}
 \end{figure}
 
@@ -325,9 +322,8 @@ In this section, we quantify how good the dimensional reduction is by measuring 
 We see that the error rate is generally quite high for a low number of dimensions. For PCA, as shown in Figure \ref{pca-variance-explained}, four principal components can only explain 29\% variance of the data.
 
 \begin{figure}[H]
-\begin{center}
-\includegraphics[width=3in]{pca_explained.png}
-\end{center}
+\centering
+\includegraphics[width=4in]{pca_explained.png}
 \caption{Percentage of variance explained by principal components}
 \label{pca-variance-explained}
 \end{figure}
@@ -337,25 +333,25 @@ The results of the classification are shown for each classifier when reducing to
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|c|c|c|c|}\hline
-logistic & PCA & LLE & Isomap\\\hline
-2 & 0.44 & 0.254 & 0.473\\\hline
-30 & 0.901 & 0.808 & 0.894\\\hline
-all & 1.0 & 1.0 & 1.0\\\hline
+Logistic & PCA & LLE & Isomap\\\hline
+d=2 & 0.44 & 0.254 & 0.473\\\hline
+d=30 & 0.901 & 0.808 & 0.894\\\hline
+d=all & 1.0 & 1.0 & 1.0\\\hline
 \end{tabular}
 \begin{tabular}{|c|c|c|c|}\hline
-naive Bayes & PCA & LLE & Isomap\\\hline
-2 & 0.478 & 0.382 & 0.566\\\hline
-30 & 0.856 & 0.813 & 0.849\\\hline
-all & 0.763 & 0.763 & 0.763\\\hline
+Naive Bayes & PCA & LLE & Isomap\\\hline
+d=2 & 0.478 & 0.382 & 0.566\\\hline
+d=30 & 0.856 & 0.813 & 0.849\\\hline
+d=all & 0.763 & 0.763 & 0.763\\\hline
 \end{tabular}
 \begin{tabular}{|c|c|c|c|}\hline
 SVM & PCA & LLE & Isomap\\\hline
-2 & 0.215 & 0.256 & 0.145\\\hline
-30 & 0.506 & 0.811 & 0.334\\\hline
-all & 1.0 & 1.0 & 1.0\\\hline
+d=2 & 0.215 & 0.256 & 0.145\\\hline
+d=30 & 0.506 & 0.811 & 0.334\\\hline
+d=all & 1.0 & 1.0 & 1.0\\\hline
 \end{tabular}
 \end{center}
-\caption{Performance of different classifiers on data of different number of reduced dimensions. }
+\caption{Performance of different classifiers on data of different number of reduced dimensions. d=x indicates data reduced to x dimensions. d=all indicates data without any dimension reduction. Classifiers from left to right: Logistic Regression, Naive Bayes, Support Vector Machine (SVM).}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -371,9 +367,5 @@ https://www.cs.duke.edu/courses/fall13/compsci527/ notes/svd.pdf \\
 \mbox{} \\
 Accessed 2015. Other Dimension Reduction Techniques. \\
 http://www.stat.cmu.edu/~ryantibs/advmethods/notes/ otherdr.pdf \\
-\mbox{} \\
-
-
-%\end{multicols}
 
 \end{document}
